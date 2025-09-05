@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+
+<!-- Banner Section -->
+{% if banner %}
+<div class="about-banner">
+    <img src="{{ banner.image.url }}" alt="{{ banner.alt_text }}">
+</div>
+{% endif %}
+
+<!-- Who are We Section -->
+<section class="who-we">
+    <h2><span>Who are</span> <span class="highlight">We?</span></h2>
+    <p>With over 20 years of experience in the financial markets, we’re more than just a trading<br>
+       platform — we’re a trusted partner in your trading journey.</p>
+    <p>Built on transparency, performance, and community, we’re here to help you trade<br>
+       smarter and grow stronger — every step of the way.</p>
+</section>
+
+<!-- Mission Section -->
+{% if mission %}
+<section class="mission-vision">
+    <div class="mv-image">
+        <img src="{{ mission.image.url }}" alt="{{ mission.title }}">
+    </div>
+    <div class="mv-text right">
+        <h3>{{ mission.title }}</h3>
+        <p>{{ mission.description }}</p>
+    </div>
+</section>
+{% endif %}
+
+<!-- Vision Section -->
+{% if vision %}
+<section class="mission-vision reverse">
+    <div class="mv-text left">
+        <h3>{{ vision.title }}</h3>
+        <p>{{ vision.description }}</p>
+    </div>
+    <div class="mv-image">
+        <img src="{{ vision.image.url }}" alt="{{ vision.title }}">
+    </div>
+</section>
+{% endif %}
+
+<!-- Why Choose Section -->
+<section class="why-choose">
+    <h2>Why Choose <span class="highlight">TRACO</span></h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <img src="{% static 'images/w1.png' %}" alt="Research">
+            <p>Research & Recommended Stock</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'images/w2.png' %}" alt="Community">
+            <p>Join Our Community <br>of 5 Million + Happy Investors</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'images/w3.png' %}" alt="Invest">
+            <p>Invest in All-in-one Platform</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'images/w4.png' %}" alt="Service">
+            <p>Get personalized service at 160+ branches in India</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

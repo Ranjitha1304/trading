@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+<div class="blog-banner">
+    <div class="banner-content">
+        <h2 class="white-text">{{ banner.heading_white }}</h2>
+        <h2 class="green-text">{{ banner.heading_green }}</h2>
+        <p class="desc-text">{{ banner.description|safe }}</p>
+    </div>
+    <div class="banner-image">
+        <img src="{{ banner.image.url }}" alt="Blog Banner">
+    </div>
+</div>
+
+<div class="blog-tabs">
+    <div class="tab-headers">
+        {% for category in categories %}
+            <button class="tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ category.name|slugify }}">
+                {{ category.name }}
+            </button>
+        {% endfor %}
+    </div>
+
+{% for category in categories %}
+    <div class="tab-content {% if forloop.first %}active{% endif %}" id="{{ category.name|slugify }}">
+        <div class="card-container">
+            {% for post in category.posts_list %}
+            <div class="blog-card">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                <p class="meta">{{ post.reading_time }}</p>
+                <p class="title">{{ post.title|safe }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}

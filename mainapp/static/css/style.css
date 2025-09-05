@@ -1,0 +1,227 @@
+/* static/css/style.css */
+
+/* Color variables */
+:root{
+  --bg-dark: #070c0e;
+  --nav-dark: #0b0f10;
+  --lime: #BAFD02;
+  --white: #ffffff;
+  --muted-gray: #bdbdbd;
+  --active-gray: #9aa0a3;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body {
+  font-family: "Open Sans", sans-serif;
+  background: var(--bg-dark);
+  color: var(--white);
+  margin: 0;
+}
+
+/* ensure content not under fixed navbar */
+.site-main { padding-top: 84px; }
+
+/* NAVBAR */
+.traco-navbar {
+  background: linear-gradient(180deg, #0a0d0e 0%, #070d0e 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 0.6rem 1rem;
+}
+
+/* custom toggler bars */
+.navbar-toggler {
+  border-color: rgba(255,255,255,0.12);
+}
+.navbar-toggler-icon {
+  background-image: none;
+  width: 28px;
+  height: 20px;
+  position: relative;
+  display: inline-block;
+}
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--white);
+}
+.navbar-toggler-icon::before { top: 0; }
+.navbar-toggler-icon span { top: 9px; }
+.navbar-toggler-icon::after { bottom: 0; }
+
+/* Make UL span full width and distribute items evenly */
+.navbar-nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+/* Give each item equal space */
+.navbar-nav .nav-item {
+  flex: 1 1 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* Logo column centered */
+.nav-logo-link { display:inline-block; }
+.logo-img {
+  /* width: 180px;
+  height: 180px; */
+  object-fit: contain;
+  display: inline-block;
+}
+
+/* Nav link styles */
+.nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  padding: 0.5rem 0.4rem;
+  border-radius: 6px;
+  display: inline-block;
+  transition: color .15s ease-in-out;
+}
+.nav-link:hover {
+  color: var(--lime) !important;
+}
+.nav-link.active {
+  color: var(--active-gray) !important;
+}
+
+/* user icon */
+.user-icon {
+  font-size: 1.6rem;
+  color: var(--white);
+}
+
+/* Footer common */
+.traco-footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  /* background: #050707; */
+  color: var(--white);
+  padding: 48px 0;
+  margin-top: 48px;
+}
+.footer-flex {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+.footer-col { flex: 1 1 180px; min-width: 160px; }
+.footer-col.col-1 { flex: 1.4 1 250px; }
+.footer-col.col-5 { flex: 1.4 1 250px; }
+
+
+/* column 1 */
+.footer-logo {  display:block; margin-bottom: 10px; }
+.get-in-touch { color: var(--muted-gray); margin-bottom: 12px; }
+.social-icons { display:flex; gap:12px; align-items:center; }
+.social-icon {
+  display:inline-flex;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background: var(--lime);
+  color: #0b0b0b;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size: 1.25rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+
+/* footer links */
+.footer-links { list-style:none; padding:0; margin:0; }
+.footer-links li { margin-bottom: 8px; font-size: 18px;}
+.footer-links a { color: var(--white); text-decoration:none; font-weight:500; }
+.footer-links a:hover { color: var(--lime); text-decoration: none; }
+
+
+/* .logo-block img {
+    width: 100px;
+    height: 100px;
+} */
+
+/* NEWSLETTER - joined input + button (no gap) and wider */
+.newsletter .newsletter-joined {
+  display: flex;
+  width: 100%;
+  max-width: 440px; /* wider input total width */
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: white;
+}
+#newsletter-email {
+  flex: 1 1 auto;
+  padding: 10px 14px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+}
+.subscribe-btn {
+  border: none;
+  padding: 10px 18px;
+  background: var(--lime);
+  color: #0b0b0b;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.subscribe-btn:hover { opacity: 0.95; }
+.subscribe-message {
+  color: #bff580;
+  margin-top: 8px;
+  min-height: 18px;
+}
+.newsletter-note {  font-size: .95rem; margin-top:8px; }
+
+/* container width */
+.container { max-width:1200px; margin:0 auto; padding:0 18px; }
+
+/* Hero placeholder */
+.hero { padding-top: 40px; padding-bottom: 40px; color: var(--white); }
+
+/* Responsive media queries you requested */
+
+/* Mobile */
+@media (min-width: 320px) and (max-width: 767px) {
+  .site-main { padding-top: 70px; }
+  /* collapse will show vertical items; make items full width and stacked */
+  .navbar-nav.w-100 {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .navbar-nav.w-100 .nav-item { flex: unset; text-align: left; padding-left: 12px; }
+  .logo-img { margin-left: 6px; }
+  .footer-flex { flex-direction: column; gap: 24px; }
+  .footer-col { width: 100%; }
+  .footer-col.col-1 { order: -1; }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-main { padding-top: 78px; }
+  .container { max-width: 980px; }
+  .footer-flex { gap: 20px; }
+}
+
+/* Small desktop */
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .container { max-width: 1100px; }
+  .site-main { padding-top: 84px; }
+}

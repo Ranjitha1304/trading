@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login - TRACO{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+
+<section class="auth-section">
+  <div class="auth-wrap container">
+    <!-- left image (admin uploaded) -->
+    <div class="auth-left">
+      {% if image %}
+        <img src="{{ image.image.url }}" alt="{{ image.name }}" class="auth-left-img">
+      {% endif %}
+    </div>
+
+    <!-- right form -->
+    <div class="auth-right">
+      <h2 class="auth-heading">Login</h2>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <label class="form-label">E-mail Id</label>
+        <input type="email" name="email" class="auth-input" value="{{ form.email.value|default_if_none:'' }}"/>
+        {% for e in form.email.errors %}<div class="field-error">{{ e }}</div>{% endfor %}
+
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="auth-input" />
+        {% for e in form.password.errors %}<div class="field-error">{{ e }}</div>{% endfor %}
+
+        <div class="forgot-row">
+          <a href="#" class="forgot-link">Forgot Your Password?</a>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-login">Login</button>
+        </div>
+
+        {% if error %}
+          <div class="form-error">{{ error }}</div>
+        {% endif %}
+
+      </form>
+
+      <p class="alt-link">New Customer? <a href="{% url 'register' %}">Create Your Account</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

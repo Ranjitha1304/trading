@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="home-banner">
+    {% if homepage and homepage.banner %}
+    <img src="{{ homepage.banner.url }}" alt="Banner" class="banner-img">
+    {% endif %}
+</div>
+
+<div class="sub-banner">
+    {% if homepage and homepage.sub_banner %}
+    <img src="{{ homepage.sub_banner.url }}" alt="Sub Banner" class="sub-banner-img">
+    {% endif %}
+</div>
+
+
+
+
+
+<!-- =========================
+     Section 1: Text + Image
+========================= -->
+<section class="trusted-section">
+    <div class="trusted-container">
+        <div class="trusted-text">
+            <p class="line white">20 years of industry expertise, we've empowered thousands</p>
+            <p class="line white">of traders to take control of their financial future. Our platform</p>
+            <p class="line green">combines proven experience with cutting-edge tools to help</p>
+            <p class="line green">you trade smarter, faster, and more confidently.</p>
+            <div class="trust">
+                <div>
+                    <h3 class="trusted-green">Your Trusted</h3>
+                    <h3 class="partners">
+                        Partners of <span class="traco">TRACO</span>
+                    </h3>
+                </div>
+                <div>
+                    <p class="built">Built on trust. Driven by results.</p>
+                    <p class="built">Your partner in every market move.</p>
+                </div>
+                <div class="trusted-image">
+                    <img src="{% static 'images/phone.png' %}" alt="Phone Image">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================
+     Section 2: Three Cards
+========================= -->
+
+<section class="cards-section">
+  <div class="cards-container">
+
+    <!-- Card 1 -->
+    <div class="card card-dark">
+      <div class="card-number">01.</div>
+      <div class="card-content">
+        <h4>Service For Any<br>Level of Expertise.</h4>
+      </div>
+    </div>
+
+    <!-- Card 2 (highlight) -->
+    <div class="card card-highlight">
+      <div class="card-number" style="color: black;">02.</div>
+      <div class="card-content">
+        <h4>Industries Best<br>Practices</h4>
+        <p>
+          We follow the industry's best practices to ensure security,
+          transparency, and performance at every level. From advanced
+          risk management to ........
+        </p>
+        <a href="{% url 'about_us' %}" class="learn-more">
+          Learn More <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card card-dark">
+      <div class="card-number">03.</div>
+      <div class="card-content">
+        <h4>Protected By<br>Insurance</h4>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<div class="home-section">
+    <h4>How it Works?</h4>
+  
+  <!-- How it Works Image -->
+  {% if how_it_works %}
+    <div class="how-it-works">
+      <img src="{{ how_it_works.image.url }}" alt="How It Works">
+    </div>
+  {% endif %}
+
+  <!-- Dashboard Image -->
+  {% if dashboard %}
+    <div class="dashboard">
+      <img src="{{ dashboard.image.url }}" alt="Dashboard">
+    </div>
+  {% endif %}
+
+</div>
+
+
+
+<!-- Community Section -->
+<section class="community-section">
+  <h2 class="community-title">
+    Build a <span class="community-strong">Strong</span> Community
+  </h2>
+  <p class="community-sub">
+    Join a global network of passionate traders.  Share strategies,<br>
+    learn from experts, and grow together in a supportive,<br>
+    success-driven environment.
+  </p>
+
+  <div class="community-grid">
+    {# Expect at least 5 images in order via admin #}
+    {% for img in community_images|slice:":5" %}
+      <figure class="community-item">
+        <img src="{{ img.image.url }}" alt="Community {{ forloop.counter }}">
+      </figure>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+{% endblock %}

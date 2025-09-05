@@ -1,0 +1,18 @@
+# Django framework
+Django==5.2.3
+
+# Gunicorn for Render deployment
+gunicorn==23.0.0
+
+# Whitenoise for static files
+whitenoise==6.7.0
+
+# For PostgreSQL support on Render
+psycopg2-binary==2.9.9
+
+# To parse DATABASE_URL (for PostgreSQL)
+dj-database-url==2.3.0
+
+# Email dependencies (if you stick with Gmail, not always needed)
+requests==2.32.3
+

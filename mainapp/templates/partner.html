@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Become a Partner - TRACO{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/partner.css' %}">
+
+<section class="partner-hero">
+  <div class="partner-container">
+
+    <!-- Left image (replace static with your image later) -->
+    <div class="partner-image">
+      <img src="{% static 'images/partner.png' %}" alt="Partner Image">
+    </div>
+
+    <!-- Right form / content -->
+    <div class="partner-form-wrap">
+      <h2 class="partner-heading">
+        Welcome to the First Step<br>
+        of Becoming a <span class="traco-green">TRACO</span> Partner
+      </h2>
+
+      <form id="partner-form" method="post" novalidate>
+        {% csrf_token %}
+        <div class="row">
+          <div class="col col-half">
+            {{ form.name }}
+            {% if form.name.errors %}<div class="error">{{ form.name.errors.0 }}</div>{% endif %}
+          </div>
+          <div class="col col-half">
+            {{ form.phone }}
+            {% if form.phone.errors %}<div class="error">{{ form.phone.errors.0 }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            {{ form.email }}
+            {% if form.email.errors %}<div class="error">{{ form.email.errors.0 }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col-half">
+            {{ form.city }}
+            {% if form.city.errors %}<div class="error">{{ form.city.errors.0 }}</div>{% endif %}
+          </div>
+          <div class="col col-half">
+            {{ form.pincode }}
+            {% if form.pincode.errors %}<div class="error">{{ form.pincode.errors.0 }}</div>{% endif %}
+          </div>
+        </div>
+
+        <div class="row submit-row">
+          <button type="submit" class="btn-submit">Submit</button>
+          <div class="success-area">
+            {% if success_message %}
+              <div class="success">{{ success_message }}</div>
+            {% endif %}
+            {% if form.non_field_errors %}
+              {% for err in form.non_field_errors %}
+                <div class="error">{{ err }}</div>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+
+      </form>
+
+      <div class="partner-contact">
+        <h5><p><strong>Contact us Alternatively , You can Contact</strong></p></h5>
+        <p>Our Business Partner Team</p>
+        <p>Phone Number : 022 982231</p>
+        <p>Email id : Businesspartner@tranco.in</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Why partner (icons + text) -->
+<section class="partner-benefits">
+  <div class="benefits-intro">
+    <h3 class="benefits-heading">
+      <span class="benefits-green">People become partners to earn passive income and grow with a trusted brand.</span>
+    </h3>
+    <p class="benefits-desc">
+      They get access to high commissions, marketing <br>support, and long-term business potential.
+    </p>
+    <hr class="benefits-divider">
+  </div>
+
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <img src="{% static 'images/p1.png' %}" alt="Technology">
+      <h4>Technology
+      <p class="content">A customer-centric focus on technology with pioneering product launches like TradeTiger, online browser-based trading, installable terminals, mobile, call n trade and in-person trade through branch offices.</p>
+    </h4>
+    </div>
+
+    <div class="benefit-item">
+      <img src="{% static 'images/p2.png' %}" alt="Training">
+      <h4>Training
+      <p class="content">Comprehensive training for the business partner and their employees at the nearest branch.</p>
+    </h4>
+    </div>
+
+    <div class="benefit-item">
+      <img src="{% static 'images/p3.png' %}" alt="Research">
+      <h4>Research
+      <p class="content">In an information-centric business like ours, knowledge makes all the difference. We deliver quality and in-depth research.</p>
+    </h4>
+    </div>
+
+    <div class="benefit-item">
+      <img src="{% static 'images/p4.png' %}" alt="Marketing Support">
+      <h4>Marketing Support
+      <p class="content">Facilitating business development by client level events, and activities for your outlet.</p>
+    </h4>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/partner.js' %}"></script>
+{% endblock %}

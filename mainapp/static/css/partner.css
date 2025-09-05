@@ -1,0 +1,172 @@
+/* partner.css - layout + your media queries */
+
+/* Colors */
+:root {
+  --bg-dark: #070c0e;
+  --lime: #BAFD02;
+  --white: #ffffff;
+  --muted: #bdbdbd;
+}
+
+/* base */
+.partner-hero {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: 40px 20px;
+}
+.partner-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* left image */
+.partner-image {
+  flex: 1 1 460px;
+  display: flex;
+  justify-content: center;
+}
+.partner-image img {
+  /* max-width: 460px; */
+  width: 100%;
+  height: auto;
+}
+
+/* right form area */
+.partner-form-wrap {
+  flex: 1 1 480px;
+  max-width: 560px;
+}
+.partner-heading {
+  font-size: 26px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.traco-green {
+  color: var(--lime);
+  font-weight: 700;
+}
+
+/* form layout */
+form { width: 100%; }
+.row { display: flex; gap: 16px; margin-bottom: 12px; align-items: center; }
+.col { flex: 1; }
+.col-half { flex: 1; min-width: 0; }
+input[type="text"], input[type="email"], select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #fff;
+  color: black;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='10'><polygon points='0,0 14,0 7,10' style='fill:%23000'/></svg>"); background-repeat:no-repeat; background-position:right 12px center; padding-right:30px; }
+
+.error { color: #ffb3b3; font-size: 13px; margin-top: 6px; }
+.success { color: #bff580; font-weight:700; }
+
+/* submit row: show message next to button */
+.submit-row { align-items: center; }
+.btn-submit {
+  background: var(--lime);
+  color: #0b0b0b;
+  font-weight: 700;
+  font-size: 24px;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-right: 14px;
+  margin-top: 20px;
+}
+
+/* contact block below */
+.partner-contact {
+  /* margin-top: 18px; */
+  color: var(--white);
+  font-size: 20px;
+}
+
+.partner-contact p {
+    margin: 0;
+}
+
+/* Benefits section */
+.partner-benefits {
+  padding: 40px 20px 80px;
+  background: var(--bg-dark);
+  color: var(--white);
+}
+.benefits-intro { text-align:center; margin-bottom: 22px; }
+.benefits-green { color: var(--lime); font-weight:700; font-size:24px; }
+.benefits-desc { font-size:24px; color: #fff; margin-top: 10px; }
+.benefits-divider { 
+    width: 50%; 
+    margin: 18px auto; 
+    border: 0; height: 4px; 
+    background: rgb(205, 204, 204)}
+
+.benefits-grid {
+  display: flex;
+  gap: 36px;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.benefit-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: transparent;
+  padding: 8px 12px;
+  width: calc(50% - 40px);
+  box-sizing: border-box;
+}
+/* .benefit-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+} */
+
+p.content  {
+    font-size: 18px !important;
+}
+.benefit-item h4 { color: var(--lime); margin: 0 0 6px 0; }
+.benefit-item p { color: #fff; margin: 0; line-height: 1.5; }
+
+/* ====================
+   Media Queries (preferred format)
+   ==================== */
+
+/* Mobile (320px - 767px) */
+@media (min-width: 320px) and (max-width: 767px) {
+  .partner-container { flex-direction: column; padding: 20px; }
+  .partner-image { order: -1; }
+  .partner-heading { text-align: center; }
+  .row { flex-direction: column; gap: 8px; }
+  .benefit-item { width: 100%; }
+  .benefits-divider { width: 90%; }
+}
+
+/* Tablet (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .partner-container { padding: 20px; }
+  .partner-image { flex-basis: 380px; }
+  .partner-form-wrap { flex-basis: 520px; }
+  .benefit-item { width: calc(50% - 20px); }
+}
+
+/* Small Desktop (1024px - 1300px) */
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .partner-container { gap: 24px; }
+  .partner-image { flex-basis: 420px; }
+  .partner-form-wrap { flex-basis: 560px; }
+}
